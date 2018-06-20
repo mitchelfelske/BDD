@@ -51,6 +51,8 @@ group :development do
 end
 
 group :test do
+  # Adds a Domain Specific Language (DSL) testing tool
+  gem 'rspec', '~> 3.0'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
