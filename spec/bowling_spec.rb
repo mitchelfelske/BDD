@@ -7,12 +7,21 @@ RSpec.describe Bowling do
   end
 
   context "frame with no strike or spare" do
+    it "sets pins hit for the first roll" do
+      @bowling.hit(5,4)
+      expect(@bowling.game[5][:roll_one]).to eq 4
+    end
+
+    it "sets pins hit for the second roll" do
+      @bowling.hit(5,4)
+      @bowling.hit(5,3)
+      expect(@bowling.game[5][:roll_two]).to eq 3
+    end
+
     it "sums the pin count for each roll" do
       @bowling.hit(5,4)
       @bowling.hit(5,3)
       @bowling.frame_score 5
-      expect(@bowling.game[5][:roll_one]).to eq 4
-      expect(@bowling.game[5][:roll_two]).to eq 3
       expect(@bowling.game[5][:score]).to eq 7
     end
   end
